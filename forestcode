@@ -1,0 +1,108 @@
+// Prepare Turtle to Draw
+hide();
+penUp();
+
+// Calling all functions
+drawBackground();
+drawAllClouds();
+drawAllMountains();
+drawGround();
+drawAllTrees();
+
+// Function draws three mountains at random locations and makes sure the turtle is not tilted.
+function drawAllMountains() {
+  for (var i = 0; i < 3; i++) {
+    moveTo(randomNumber(0, 320), randomNumber(100, 200));
+    drawMountains(randomNumber(100, 200));
+    turnTo(0);
+  }
+}
+// Function draws 30 trees at random locations and makes sure the turtle is not tilted.
+function drawAllTrees(){
+  for (var i = 0; i < 30; i++) {
+    moveTo(randomNumber(0,320),randomNumber(200,350));
+    turnTo(0);
+    drawTrees(randomNumber(60,100));
+  }
+}
+// Functnon that draws 5 clouds at random locations.
+function drawAllClouds(){
+  for (var i = 0; i < 5; i++) {
+    moveTo(randomNumber(0,320),randomNumber(0,100));
+    drawClouds(randomNumber(5,20), randomNumber(2, 5));
+  }
+}
+
+// Function for the turtle how the turtle moves to draw the trees as well as the color. Height only applies to the "trunk."
+function drawTrees(height){
+  penRGB(randomNumber(134, 144),randomNumber(63,74),randomNumber(15, 24));
+  penWidth(17);
+  penDown();
+  turnRight(90);
+  moveForward(15);
+  turnRight(90);
+  moveForward(height);
+  turnRight(90);
+  moveForward(15);
+  turnRight(90);
+  moveForward(height);
+ 
+  penRGB(34, 139, 34);
+  penWidth(20);
+  turnLeft(90);
+  moveForward(10);
+  turnRight(120);
+  moveForward(35);
+  turnRight(120);
+  moveForward(35);
+  turnRight(120);
+  moveForward(25);
+  penUp();
+
+}
+
+//Function that draws the ground.
+function drawGround() {
+  moveTo(0, 350);
+  penRGB(62, 49, 23);
+  penWidth(250);
+  penDown();
+  turnRight(90);
+  moveForward(320);
+  turnLeft(90);
+  penUp();
+}
+//Function that draws a large dot as the background.
+function drawBackground() {
+  penRGB(135, 206, 235);
+  moveTo(160, 225);
+  dot(1000);
+}
+//Fucntion that draws random dots that are used as clouds.
+function drawClouds (size){
+penRGB(255,255,255,0.5);
+penWidth(10);
+penDown();
+
+  
+for (var i = 0; i < 20; i++) {
+dot(size);
+move(randomNumber(1,5),(randomNumber(1,3)));
+dot(randomNumber(10,30));
+}
+penUp();
+}
+//Function draws large triangles as mountains.
+function drawMountains(size) {
+  penRGB(160,82,45);
+  penWidth(100);
+  penDown();
+  turnTo(30);
+  turnRight(120);
+  moveForward(size);
+  turnRight(120);
+  moveForward(size);
+  turnRight(120);
+  moveForward(size);
+  penUp();
+}
